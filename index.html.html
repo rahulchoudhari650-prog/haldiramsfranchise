@@ -202,99 +202,27 @@ form.addEventListener('submit', async function(e) {
     alert('Network error. Please try again.');
   }
 });
+<section class="cta-band"><div class="wrap cta-inner"><div><h2>Ready to explore your next business move?</h2><p>Start with a clear enquiry and verify every commercial detail.</p></div><a class="btn btn-gold" href="#enquiry">Start Your Enquiry <span>↗</span></a></div></section>
+<section class="section" id="contact"><div class="wrap"><div class="section-head"><span class="eyebrow">Get in touch</span><h2>Contact and office information</h2><p>The contact information and office addresses below were supplied for this website draft and have have not been verified. Their use here does not imply any affiliation, appointment or authorisation.</p></div><div class="contact-grid"><div class="contact-card"><h3>Enquiry contact</h3><div class="contact-line"><span class="contact-icon">☎</span><div><strong>Mobile</strong><span><a href="tel:9163031543">9163031543</a></span></div></div><div class="contact-line"><span class="contact-icon">✉</span><div><strong>Email</strong><span><a href="mailto:support@haldirams-india.com">support@haldirams-india.com</a></span></div></div></div><div class="contact-card"><h3>Address details supplied</h3><div class="contact-line"><span class="contact-icon">⌖</span><div><strong>Corporate Office</strong><span>Haldiram Snacks Food Pvt Ltd.<br>C-31, Sector 62, Noida, UP 201 301</span></div></div><div class="contact-line"><span class="contact-icon">⌖</span><div><strong>Registered Office</strong><span>145, Old Pardi Naka, Bhandara Road, Nagpur 440035</span></div></div></div></div></div></section>
+<section class="section" id="legal" style="background:#f8f0e6"><div class="wrap"><div class="section-head"><span class="eyebrow">Important information</span><h2>Policies and website terms</h2><p>These summary notices are provided as a starting point. Have a qualified professional review complete legal documents before publishing or collecting personal information.</p></div><div class="legal-grid"><article class="legal-card" id="privacy"><h3>Privacy Policy</h3><p>Information entered in this demonstration form stays in the current browser session and is not transmitted. A live site must disclose data collection, purpose, retention, security, sharing and user rights, and obtain valid consent.</p></article><article class="legal-card" id="terms"><h3>Terms & Conditions</h3><p>Website content is for general information and preliminary enquiry purposes only. No franchise, dealership, distributorship, approval or commercial relationship is created by viewing the site or submitting an enquiry.</p></article><article class="legal-card" id="disclaimer"><h3>Disclaimer</h3><p>This website is an informational business-enquiry resource. Names are used only to describe the subject of the enquiry. Verify all offers, contacts, costs and addresses directly.</p></article></div></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-main"><div class="footer-brand"><h3>Haldiram’s <em>Business Opportunities</em></h3><p>An information platform to explore food retail, restaurant and distribution business formats in India.</p><div class="socials"><a href="#contact" aria-label="Facebook">f</a><a href="#contact" aria-label="Instagram">◎</a><a href="#contact" aria-label="LinkedIn">in</a></div></div><div><h4 class="footer-title">Quick Links</h4><div class="footer-links"><a href="#home">Home</a><a href="#opportunities">Business Opportunities</a><a href="#investment">Investment & Requirements</a><a href="#how-to-apply">How to Apply</a><a href="#enquiry">Business Enquiry</a><a href="#contact">Contact Us</a></div></div><div><h4 class="footer-title">Business Formats</h4><div class="footer-links"><a href="#opportunities">Kiosk Business</a><a href="#opportunities">QSR Business</a><a href="#opportunities">Restaurant Business</a><a href="#opportunities">Dealership</a><a href="#opportunities">Distributorship</a><a href="#gallery">Photo Gallery</a></div></div><div class="footer-contact"><h4 class="footer-title">Contact Us</h4><div class="contact-line"><span class="contact-icon">☎</span><div><strong>Call Us</strong><span><a href="tel:9163031543">9163031543</a></span></div></div><div class="contact-line"><span class="contact-icon">✉</span><div><strong>Email Us</strong><span><a href="mailto:support@haldirams-india.com">support@haldirams-india.com</a></span></div></div><div class="office-block"><strong>Corporate Office</strong><p>Haldiram Snacks Food Pvt Ltd.<br>C-31, Sector 62, Noida, UP 201 301</p></div><div class="office-block"><strong>Registered Office</strong><p>145, Old Pardi Naka, Bhandara Road,<br>Nagpur 440035</p></div></div></div><div class="footer-note"><span>© 2026 Haldiram’s. All rights reserved.</span><span><a href="#privacy">Privacy Policy</a>　·　<a href="#terms">Terms & Conditions</a>　·　<a href="#disclaimer">Disclaimer</a></span><span style="color:var(--gold);font-family:Georgia;font-style:italic">Good Food. Thoughtful Business.</span></div></footer>
+<div class="mobile-call"><a class="btn btn-primary" href="#enquiry">Submit Business Enquiry ↗</a></div>
+</div>
+<script>
+const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'×':'☰'});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'}));
+document.querySelectorAll('[data-format]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('format').value=a.dataset.format}));
+const form=document.getElementById('businessForm'),steps=[...document.querySelectorAll('.form-step')],titles=['Personal information','Business information','Location & infrastructure','Financial overview & review'];let current=0;
+const progress=document.getElementById('progressFill'),stepTitle=document.getElementById('stepTitle'),stepCount=document.getElementById('stepCount'),prev=document.getElementById('prevBtn'),next=document.getElementById('nextBtn'),submit=document.getElementById('submitBtn'),error=document.getElementById('formError');
+function updateStep(){steps.forEach((s,i)=>s.classList.toggle('active',i===current));stepTitle.textContent=titles[current];stepCount.textContent=`Step ${current+1} of 4`;progress.style.width=`${(current+1)*25}%`;prev.style.visibility=current===0?'hidden':'visible';next.style.display=current===3?'none':'inline-flex';submit.style.display=current===3?'inline-flex':'none';error.style.display='none';if(current===3)buildReview()}
+function validateStep(){let ok=true;const active=steps[current];active.querySelectorAll('[required]').forEach(el=>{if(el.type==='checkbox'){if(!el.checked)ok=false}else if(!el.value.trim())ok=false});if(current===0){const m=document.getElementById('mobile').value.trim(),w=document.getElementById('whatsapp').value.trim(),e=document.getElementById('email').value.trim();if(!/^[6-9]\d{9}$/.test(m))ok=false;if(w&&!/^[6-9]\d{9}$/.test(w))ok=false;if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e))ok=false;const age=Number(document.getElementById('age').value);if(age<18||age>100)ok=false}if(current===2&&!/^\d{6}$/.test(document.getElementById('pincode').value.trim()))ok=false;if(current===3&&!document.getElementById('consent').checked)ok=false;if(!ok){error.textContent='Please complete all required fields and check that your contact details are valid.';error.style.display='block'}return ok}
+next.addEventListener('click',()=>{if(!validateStep())return;current=Math.min(3,current+1);updateStep()});prev.addEventListener('click',()=>{current=Math.max(0,current-1);updateStep()});
+function buildReview(){const names=['Full Name','Mobile Number','Email Address','Business Format','City','State','Investment Capacity'];const ids=['fullName','mobile','email','format','city','state','investCapacity'];document.getElementById('reviewList').innerHTML=names.map((n,i)=>`<div class="review-cell"><small>${n}</small><strong>${escapeHtml(document.getElementById(ids[i]).value||'—')}</strong></div>`).join('')}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+form.addEventListener('submit',e=>{e.preventDefault();if(!validateStep())return;const ref='DEMO-'+new Date().getFullYear()+'-'+Math.random().toString(36).slice(2,8).toUpperCase();document.getElementById('referenceCode').textContent=ref;document.getElementById('formContent').style.display='none';document.getElementById('successState').style.display='block'});
+document.getElementById('newEnquiry').addEventListener('click',()=>{form.reset();current=0;document.getElementById('formContent').style.display='block';document.getElementById('successState').style.display='none';updateStep()});
+updateStep();
 </script>
- <section class="section faq-section" id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Frequently Asked Questions</span>
-      <h2>Haldirams Business Enquiry – FAQs</h2>
-      <p>Find answers to common questions about business opportunities and the enquiry process.</p>
-    </div>
-
-    <div class="faq-list">
-      <details>
-        <summary>How can I apply for a Haldirams business opportunity?</summary>
-        <p>Fill in the enquiry form with your name, contact details, preferred business model and investment capacity.</p>
-      </details>
-
-      <details>
-        <summary>What business models are available?</summary>
-        <p>Business formats may vary depending on the location and current opportunities. Select your preferred model in the enquiry form.</p>
-      </details>
-
-      <details>
-        <summary>What is the investment required?</summary>
-        <p>Investment requirements depend on the business format, property, location and infrastructure. Confirm the latest terms before making any financial commitment.</p>
-      </details>
-
-      <details>
-        <summary>Is commercial space required?</summary>
-        <p>Space and property requirements depend on the selected business format and location.</p>
-      </details>
-
-      <details>
-        <summary>Can an existing business owner apply?</summary>
-        <p>Yes, you can submit an enquiry and provide details about your existing business and available commercial space.</p>
-      </details>
-
-      <details>
-        <summary>How will I know if my enquiry is received?</summary>
-        <p>After successful submission, the website will display a confirmation message. You may also receive an acknowledgement depending on the form service settings.</p>
-      </details>
-
-      <details>
-        <summary>Does submitting an enquiry guarantee approval?</summary>
-        <p>No. An enquiry does not guarantee approval, franchise rights, dealership or distributorship.</p>
-      </details>
-
-      <details>
-        <summary>How can I contact the enquiry team?</summary>
-        <p>You can call 9163031543 or email support@haldirams-india.com.</p>
-      </details>
-    </div>
-  </div>
-</section>
-<footer class="site-footer" id="contact">
-  <div class="wrap footer-grid">
-
-    <div class="footer-about">
-      <h3>Haldirams Business Enquiry</h3>
-      <p>Explore business opportunities, understand available formats and submit your enquiry to discuss the next steps.</p>
-      <a href="#enquiry" class="footer-btn">Apply Now →</a>
-    </div>
-
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <a href="#home">Home</a>
-      <a href="#opportunities">Business Opportunities</a>
-      <a href="#enquiry">Apply Now</a>
-      <a href="#faq">FAQs</a>
-      <a href="#contact">Contact Us</a>
-    </div>
-
-    <div class="footer-contact">
-      <h4>Contact Details</h4>
-      <p><strong>Phone:</strong> <a href="tel:9163031543">9163031543</a></p>
-      <p><strong>Email:</strong> <a href="mailto:support@haldirams-india.com">support@haldirams-india.com</a></p>
-      <a href="#enquiry" class="footer-btn">Send Enquiry →</a>
-    </div>
-
-    <div class="footer-address">
-      <h4>Head Office / Registered Office (Nagpur)</h4>
-      <p>Haldiram Foods International Pvt. Ltd., 145/146, Old Pardi Naka, Bhandara Road, Nagpur, Maharashtra – 440035.</p>
-
-      <h4>Corporate Office (Noida)</h4>
-      <p>Haldiram Snacks Food Pvt. Ltd., C-31, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh – 201301.</p>
-    </div>
-   
-  </div>
-
-  <div class="footer-bottom">
-    <div class="wrap">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms-and-conditions.html">Terms & Conditions</a>
-      <p>© 2026 All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
 </body></html>
